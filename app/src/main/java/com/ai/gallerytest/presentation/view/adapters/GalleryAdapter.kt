@@ -56,9 +56,15 @@ class GalleryAdapter(val context: Context) : RecyclerView.Adapter<GalleryAdapter
         notifyItemInserted(0)
     }
 
-    fun addOldestItems(images: Collection<GalleryImage>) {
-        mData.addAll(images)
-        notifyItemRangeInserted(mData.size - images.size - 1, images.size)
+    fun addOldestItems(images: Collection<GalleryImage>, preloading: Boolean) {
+        if (preloading) {
+            for (image in images) {
+                if (!mData.contains(image)) addItem(mData.size, image)
+            }
+        } else {
+            mData.addAll(images)
+            notifyItemRangeInserted(mData.size - images.size - 1, images.size)
+        }
     }
 
     fun removeItem(image: GalleryImage) {

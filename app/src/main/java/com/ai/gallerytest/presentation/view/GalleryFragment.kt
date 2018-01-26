@@ -115,11 +115,9 @@ class GalleryFragment : BaseFragment() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ images ->
-                    if (preloading) {
+                    if (images.isNotEmpty()) {
+                        adapter.addOldestItems(images, preloading)
                         preloading = false
-                        adapter.setData(images)
-                    } else if (images.isNotEmpty()) {
-                        adapter.addOldestItems(images)
                     }
                 }))
         disposable.add(viewModel.replaces
