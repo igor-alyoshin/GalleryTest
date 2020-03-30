@@ -4,8 +4,8 @@
     <string name="start_gallery">Start gallery</string>
     <string name="gallery_item">Gallery item</string>
     <string name="action_ok">OK</string>
-    <string name="error">Error</string>
-    <string name="permissions_error">Please enable the required permissions</string>
+    <string name="warning">Warning</string>
+    <string name="permission_not_enabled_description">Please enable the required permissions</string>
 
     <string name="progress_format" formatted="false">%.0f%%</string>
 </resources>

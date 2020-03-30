@@ -1,11 +1,9 @@
 package com.ai.gallerytest.data
 
-import com.ai.gallerytest.presentation.model.GalleryImage
-import io.reactivex.Flowable
-import io.reactivex.Observable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.ReceiveChannel
 
 
 interface IGalleryRepository {
-    fun getAllImages(oldValues: ArrayList<GalleryImage>): Observable<GalleryLoadingProgress>
-    fun getImageEvents(): Flowable<Event>
+    fun loadImages(scope: CoroutineScope, skip: Int): ReceiveChannel<GalleryLoadingProgress>
 }
